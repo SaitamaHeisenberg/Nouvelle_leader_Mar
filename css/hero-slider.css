@@ -215,63 +215,125 @@
     transform: scale(0.95);
 }
 
-/* Indicateurs (dots) */
+/* ===== INDICATEURS - Modern Pill Style ===== */
 .slider-indicators {
     position: absolute;
-    bottom: 3rem;
+    bottom: 5rem;
     left: 50%;
     transform: translateX(-50%);
     z-index: 15;
     display: flex;
-    gap: 1rem;
+    gap: 0.5rem;
+    background: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    padding: 6px 10px;
+    border-radius: 50px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .indicator {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.4);
-    border: 2px solid rgba(255, 255, 255, 0.6);
+    width: 28px;
+    height: 4px;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.3);
+    border: none;
     cursor: pointer;
-    transition: var(--transition-fast);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     padding: 0;
+    position: relative;
+    overflow: hidden;
 }
 
 .indicator:hover {
-    background: rgba(255, 255, 255, 0.6);
-    transform: scale(1.2);
+    background: rgba(255, 255, 255, 0.5);
+    transform: none;
 }
 
 .indicator.active {
-    background: var(--color-white);
-    width: 32px;
-    border-radius: 6px;
+    width: 48px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
 }
 
-/* Scroll Indicator */
+/* Progress bar inside active indicator */
+.indicator.active::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 0%;
+    background: var(--color-white);
+    border-radius: 4px;
+    animation: indicatorProgress 5s linear forwards;
+}
+
+@keyframes indicatorProgress {
+    0% { width: 0%; }
+    100% { width: 100%; }
+}
+
+/* ===== SCROLL INDICATOR - Mouse Style ===== */
 .hero-slider .scroll-indicator {
     position: absolute;
-    bottom: 1.5rem;
+    bottom: 1.2rem;
     left: 50%;
     transform: translateX(-50%);
     z-index: 15;
-    animation: bounce 2s infinite;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+}
+
+.hero-slider .scroll-indicator:hover {
+    opacity: 1;
 }
 
 .hero-slider .scroll-indicator svg {
-    color: var(--color-white);
-    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+    display: none;
 }
 
-@keyframes bounce {
-    0%, 20%, 50%, 80%, 100% {
-        transform: translateY(0) translateX(-50%);
+/* Mouse outline */
+.hero-slider .scroll-indicator::before {
+    content: '';
+    width: 22px;
+    height: 36px;
+    border: 2px solid rgba(255, 255, 255, 0.7);
+    border-radius: 12px;
+    position: relative;
+    display: block;
+}
+
+/* Scroll dot inside mouse */
+.hero-slider .scroll-indicator::after {
+    content: '';
+    width: 3px;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 3px;
+    position: absolute;
+    top: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: scrollDot 2s ease-in-out infinite;
+}
+
+@keyframes scrollDot {
+    0% {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
     }
-    40% {
-        transform: translateY(-10px) translateX(-50%);
+    50% {
+        opacity: 0.3;
+        transform: translateX(-50%) translateY(14px);
     }
-    60% {
-        transform: translateY(-5px) translateX(-50%);
+    100% {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
     }
 }
 
@@ -316,7 +378,7 @@
     }
 
     .slider-indicators {
-        bottom: 2.5rem;
+        bottom: 4.5rem;
     }
 }
 
@@ -366,21 +428,22 @@
     }
 
     .slider-indicators {
-        bottom: 2rem;
-        gap: 0.75rem;
+        bottom: 3.5rem;
+        gap: 0.4rem;
+        padding: 5px 8px;
     }
 
     .indicator {
-        width: 10px;
-        height: 10px;
+        width: 20px;
+        height: 3px;
     }
 
     .indicator.active {
-        width: 24px;
+        width: 36px;
     }
 
     .hero-slider .scroll-indicator {
-        display: none; /* Masqué sur mobile pour libérer espace */
+        display: none;
     }
 }
 

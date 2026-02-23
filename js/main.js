@@ -537,7 +537,12 @@ function initHeroSlider() {
 
         // Ajouter active au slide actuel
         slides[index].classList.add('active');
-        indicators[index].classList.add('active');
+
+        // Restart progress bar animation on indicator
+        const activeIndicator = indicators[index];
+        activeIndicator.classList.remove('active');
+        void activeIndicator.offsetWidth; // Force reflow to restart animation
+        activeIndicator.classList.add('active');
 
         currentSlide = index;
     }
