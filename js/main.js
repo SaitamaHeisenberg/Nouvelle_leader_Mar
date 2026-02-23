@@ -9,12 +9,32 @@
 
 // Initialize on DOM loaded
 document.addEventListener('DOMContentLoaded', function() {
+    setActiveNavLink();
     initNavigation();
     initHeroSlider();
     initScrollAnimations();
     initSmoothScroll();
     initAOS();
 });
+
+/**
+ * Set active nav link based on current page URL
+ */
+function setActiveNavLink() {
+    var path = window.location.pathname;
+    var page = path.substring(path.lastIndexOf('/') + 1) || 'index.html';
+
+    var navLinks = document.querySelectorAll('.nav-link');
+    navLinks.forEach(function(link) {
+        link.classList.remove('active');
+        var href = link.getAttribute('href');
+        if (!href) return;
+        var linkPage = href.split('#')[0].split('?')[0];
+        if (linkPage === page || (page === 'index.html' && linkPage === '')) {
+            link.classList.add('active');
+        }
+    });
+}
 
 /**
  * Navigation functionality

@@ -73,7 +73,7 @@
     // ============================================
     function initScrollReveal() {
         const revealElements = document.querySelectorAll(
-            '.reveal-on-scroll, .reveal-left, .reveal-right, .reveal-scale'
+            '.reveal-on-scroll, .reveal-left, .reveal-right, .reveal-scale, .reveal-blur, .reveal-rotate'
         );
 
         if (!revealElements.length) return;
@@ -86,11 +86,34 @@
                 }
             });
         }, {
-            threshold: 0.15,
-            rootMargin: '0px 0px -60px 0px'
+            threshold: 0.1,
+            rootMargin: '0px 0px -40px 0px'
         });
 
         revealElements.forEach(el => observer.observe(el));
+    }
+
+    // ============================================
+    // SECTION PARALLAX
+    // ============================================
+    function initSectionParallax() {
+        if (window.innerWidth < 768) return;
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+        var parallaxSections = document.querySelectorAll('.stats-section, .why-choose-section, .cta-section');
+        if (!parallaxSections.length) return;
+
+        window.addEventListener('scroll', function() {
+            var scrollTop = window.pageYOffset;
+            parallaxSections.forEach(function(section) {
+                var rect = section.getBoundingClientRect();
+                if (rect.top < window.innerHeight && rect.bottom > 0) {
+                    var speed = 0.03;
+                    var offset = (rect.top - window.innerHeight / 2) * speed;
+                    section.style.backgroundPositionY = offset + 'px';
+                }
+            });
+        }, { passive: true });
     }
 
     // Auto-apply reveal classes to sections
@@ -334,6 +357,63 @@
     }
 
     // ============================================
+    // SERVICE CARDS - 3D TILT EFFECT
+    // ============================================
+    function initCardTilt() {
+        if (window.innerWidth < 1024) return;
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+        const cards = document.querySelectorAll('.service-card');
+        if (!cards.length) return;
+
+        cards.forEach(card => {
+            card.addEventListener('mousemove', function(e) {
+                const rect = this.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+
+                const rotateX = ((y - centerY) / centerY) * -8;
+                const rotateY = ((x - centerX) / centerX) * 8;
+
+                this.style.transform = 'perspective(800px) rotateX(' + rotateX + 'deg) rotateY(' + rotateY + 'deg) translateY(-8px)';
+
+                // Move the glow pseudo-element
+                this.style.setProperty('--mouse-x', x + 'px');
+                this.style.setProperty('--mouse-y', y + 'px');
+            });
+
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'perspective(800px) rotateX(0) rotateY(0) translateY(0)';
+                this.style.removeProperty('--mouse-x');
+                this.style.removeProperty('--mouse-y');
+            });
+        });
+    }
+
+    // ============================================
+    // BACK TO TOP BUTTON
+    // ============================================
+    function initBackToTop() {
+        var btn = document.getElementById('backToTop');
+        if (!btn) return;
+
+        window.addEventListener('scroll', function() {
+            if (window.pageYOffset > 500) {
+                btn.classList.add('visible');
+            } else {
+                btn.classList.remove('visible');
+            }
+        }, { passive: true });
+
+        btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    }
+
+    // ============================================
     // REMOVE AOS ATTRIBUTES (we use our own system)
     // ============================================
     function removeAOSAttributes() {
@@ -367,6 +447,9 @@
             initNavbarEnhanced();
             initParallaxImage();
             initFAQ();
+            initCardTilt();
+            initSectionParallax();
+            initBackToTop();
         } catch (e) {
             // Ensure page is always visible even if animations fail
             console.error('Animation init error:', e);

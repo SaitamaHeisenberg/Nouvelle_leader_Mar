@@ -4,7 +4,7 @@
    ========================================= */
 
 /* =========================================
-   PRELOADER
+   PRELOADER - Premium 2026
    ========================================= */
 .preloader {
     position: fixed;
@@ -12,14 +12,17 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, #0033CC 0%, #001F99 100%);
+    background: linear-gradient(135deg, #001A66 0%, #0033CC 40%, #001F99 100%);
+    background-size: 200% 200%;
+    animation: preloaderBg 3s ease infinite;
     z-index: 99999;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    gap: 2rem;
-    transition: opacity 0.6s ease, visibility 0.6s ease;
+    gap: 1.5rem;
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                visibility 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .preloader.loaded {
@@ -27,21 +30,115 @@
     visibility: hidden;
 }
 
-.preloader-logo {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    object-fit: contain;
-    animation: preloaderPulse 1.5s ease-in-out infinite;
-    box-shadow: 0 0 40px rgba(0, 212, 232, 0.4);
+.preloader.loaded .preloader-logo-wrapper {
+    transform: scale(1.3);
+    opacity: 0;
 }
 
+@keyframes preloaderBg {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+/* Logo wrapper with animated ring */
+.preloader-logo-wrapper {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                opacity 0.6s ease;
+}
+
+/* Spinning gradient ring */
+.preloader-logo-wrapper::before {
+    content: '';
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    right: -4px;
+    bottom: -4px;
+    border-radius: 50%;
+    background: conic-gradient(
+        from 0deg,
+        transparent 0%,
+        #00D4E8 25%,
+        #5DE7F0 50%,
+        #00D4E8 75%,
+        transparent 100%
+    );
+    animation: preloaderRingSpin 2s linear infinite;
+    mask: radial-gradient(farthest-side, transparent calc(100% - 3px), #000 calc(100% - 3px));
+    -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 3px), #000 calc(100% - 3px));
+}
+
+/* Outer glow */
+.preloader-logo-wrapper::after {
+    content: '';
+    position: absolute;
+    top: -12px;
+    left: -12px;
+    right: -12px;
+    bottom: -12px;
+    border-radius: 50%;
+    background: conic-gradient(
+        from 0deg,
+        transparent 0%,
+        rgba(0, 212, 232, 0.15) 25%,
+        transparent 50%
+    );
+    animation: preloaderRingSpin 3s linear infinite reverse;
+    filter: blur(8px);
+}
+
+@keyframes preloaderRingSpin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.preloader-logo {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: contain;
+    animation: preloaderPulse 2s ease-in-out infinite;
+    box-shadow: 0 0 30px rgba(0, 212, 232, 0.3);
+    position: relative;
+    z-index: 1;
+    background: #fff;
+}
+
+@keyframes preloaderPulse {
+    0%, 100% { transform: scale(1); box-shadow: 0 0 30px rgba(0, 212, 232, 0.3); }
+    50% { transform: scale(1.04); box-shadow: 0 0 50px rgba(0, 212, 232, 0.5); }
+}
+
+/* Company name text */
+.preloader-text {
+    font-family: var(--font-heading, 'Poppins', sans-serif);
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.9);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    animation: preloaderTextFade 1.5s ease 0.3s both;
+}
+
+@keyframes preloaderTextFade {
+    0% { opacity: 0; transform: translateY(10px); letter-spacing: 0.3em; }
+    100% { opacity: 1; transform: translateY(0); letter-spacing: 0.1em; }
+}
+
+/* Progress bar */
 .preloader-bar {
-    width: 200px;
-    height: 3px;
-    background: rgba(255, 255, 255, 0.15);
-    border-radius: 3px;
+    width: 240px;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
     overflow: hidden;
+    position: relative;
 }
 
 .preloader-bar::after {
@@ -50,13 +147,9 @@
     width: 100%;
     height: 100%;
     background: linear-gradient(90deg, #00D4E8, #5DE7F0, #00D4E8);
-    border-radius: 3px;
+    border-radius: 4px;
     animation: preloaderSlide 1.2s ease-in-out infinite;
-}
-
-@keyframes preloaderPulse {
-    0%, 100% { transform: scale(1); opacity: 1; }
-    50% { transform: scale(1.08); opacity: 0.85; }
+    box-shadow: 0 0 12px rgba(0, 212, 232, 0.5);
 }
 
 @keyframes preloaderSlide {
@@ -194,6 +287,49 @@
 .stagger-2 { transition-delay: 0.2s; }
 .stagger-3 { transition-delay: 0.3s; }
 .stagger-4 { transition-delay: 0.4s; }
+.stagger-5 { transition-delay: 0.5s; }
+.stagger-6 { transition-delay: 0.6s; }
+
+/* Reveal with deblur */
+.reveal-blur {
+    opacity: 0;
+    filter: blur(10px);
+    transform: translateY(30px);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                filter 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-blur.revealed {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0);
+}
+
+/* Reveal with rotation correction */
+.reveal-rotate {
+    opacity: 0;
+    transform: rotate(-3deg) translateY(40px);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-rotate.revealed {
+    opacity: 1;
+    transform: rotate(0) translateY(0);
+}
+
+/* =========================================
+   SECTION PARALLAX
+   ========================================= */
+.parallax-section {
+    will-change: transform;
+}
+
+.parallax-bg {
+    transition: transform 0.1s linear;
+    will-change: transform;
+}
 
 /* =========================================
    STAT COUNTER - ENHANCED ANIMATION
@@ -227,18 +363,19 @@
 }
 
 /* =========================================
-   SERVICE CARDS - 3D TILT HOVER
+   SERVICE CARDS - GLASSMORPHISM + 3D TILT
    ========================================= */
 .service-card {
     transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
                 box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1),
-                border-color 0.3s ease;
+                border-color 0.4s ease,
+                background 0.4s ease;
     transform-style: preserve-3d;
-    perspective: 1000px;
     position: relative;
     overflow: hidden;
 }
 
+/* Shimmer effect on hover */
 .service-card::before {
     content: '';
     position: absolute;
@@ -249,26 +386,105 @@
     background: linear-gradient(
         90deg,
         transparent,
-        rgba(0, 212, 232, 0.03),
+        rgba(0, 212, 232, 0.06),
+        rgba(255, 255, 255, 0.15),
+        rgba(0, 212, 232, 0.06),
         transparent
     );
-    transition: left 0.6s ease;
+    transition: left 0.7s ease;
+    z-index: 0;
 }
 
 .service-card:hover::before {
     left: 100%;
 }
 
-.service-card:hover {
-    transform: translateY(-12px) rotateX(2deg) !important;
-    box-shadow: 0 30px 60px rgba(0, 51, 204, 0.15) !important;
+/* Glow light that follows cursor (controlled via JS) */
+.service-card::after {
+    content: '';
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0, 212, 232, 0.12) 0%, transparent 70%);
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    transform: translate(-50%, -50%);
+    z-index: 0;
+    top: var(--mouse-y, 50%);
+    left: var(--mouse-x, 50%);
 }
 
-.service-card:hover .service-icon {
-    transform: scale(1.1) rotate(5deg);
-    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+.service-card:hover::after {
+    opacity: 1;
 }
 
+/* Ensure content stays above glow */
+.service-card > * {
+    position: relative;
+    z-index: 1;
+}
+
+/* Icon glow on hover */
+.service-icon {
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+                box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ===== ICON ANIMATIONS BY TYPE ===== */
+
+/* Bounce - Distribution (box) */
+.service-card[data-icon-anim="bounce"]:hover .service-icon svg {
+    animation: serviceIconBounce 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes serviceIconBounce {
+    0% { transform: translateY(0); }
+    30% { transform: translateY(-10px); }
+    50% { transform: translateY(0); }
+    70% { transform: translateY(-5px); }
+    100% { transform: translateY(0); }
+}
+
+/* Spin - Import-Export (globe) */
+.service-card[data-icon-anim="spin"]:hover .service-icon svg {
+    animation: serviceIconSpin 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes serviceIconSpin {
+    0% { transform: rotateY(0deg); }
+    100% { transform: rotateY(360deg); }
+}
+
+/* Pulse - Approvisionnement (cycle) */
+.service-card[data-icon-anim="pulse"]:hover .service-icon svg {
+    animation: serviceIconPulse 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes serviceIconPulse {
+    0% { transform: scale(1); }
+    25% { transform: scale(1.2); }
+    50% { transform: scale(0.95); }
+    75% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+/* Shake - Logistique (truck) */
+.service-card[data-icon-anim="shake"]:hover .service-icon svg {
+    animation: serviceIconShake 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes serviceIconShake {
+    0% { transform: translateX(0); }
+    20% { transform: translateX(-4px); }
+    40% { transform: translateX(4px); }
+    60% { transform: translateX(-3px); }
+    80% { transform: translateX(3px); }
+    100% { transform: translateX(0); }
+}
+
+/* Service link underline animation */
 .service-link {
     position: relative;
     overflow: hidden;
@@ -281,7 +497,7 @@
     left: 0;
     width: 0;
     height: 2px;
-    background: var(--color-primary-700);
+    background: linear-gradient(90deg, var(--color-primary-700), var(--color-secondary-600));
     transition: width 0.3s ease;
 }
 
