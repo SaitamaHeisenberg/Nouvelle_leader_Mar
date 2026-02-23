@@ -1,0 +1,332 @@
+Plan détaillé des pages & design (adapté à Nouvelle Leader Mar)
+Identité de base
+
+Nom de l’entreprise : Nouvelle Leader Mar
+
+Secteur : Distribution en gros & demi-gros, import-export de produits alimentaires et de consommation (alimentation générale, boissons, hygiène…).
+
+Cible : Détaillants, supermarchés, dépôts, hôtels/restaurants, entreprises, institutions.
+
+🧱 Page 1 – Accueil (Home)
+1. Hero plein écran
+
+Objectif UX :
+Tout de suite comprendre :
+
+Qui est Nouvelle Leader Mar
+
+Ce qu’ils font (grossiste & import-export alimentaire)
+
+Comment les contacter rapidement (téléphone / WhatsApp / Devis).
+
+Design :
+
+Fond avec dégradé bleu nuit → bleu turquoise + légère texture ou illustration de conteneurs / palettes.
+
+Bloc central en glassmorphism (fond semi-transparent, flou léger).
+
+À droite sur desktop : illustration vectorielle ou photo stylisée d’un entrepôt / palettes / container.
+
+Sur mobile : contenu centré, illustration en dessous.
+
+Éléments :
+
+H1 : “Votre partenaire grossiste & import-export à Marcory – Zone 4”
+
+Sous-titre : phrase orientée bénéfices (disponibilité, fiabilité, prix).
+
+CTA principal : bouton “Demander un devis” (scroll vers contact / ou page contact).
+
+CTA secondaire : bouton “Appeler maintenant” (tel:+225…).
+
+Petite pastille : “+10 ans d’expérience” / “Livraisons régulières en Côte d’Ivoire”.
+
+2. Section “À propos / Qui sommes-nous ?”
+
+Objectif UX : rassurer (sérieux, expérience, localisation claire).
+
+Design :
+
+Fond blanc / gris très clair.
+
+Layout en 2 colonnes sur desktop : texte à gauche, petite photo d’entrepôt / équipe à droite.
+
+Timeline ou quelques chiffres clés.
+
+Contenu :
+
+Titre H2 : “Nouvelle Leader Mar, grossiste de confiance à Marcory – Zone 4”
+
+Court paragraphe sur l’histoire + ancrage local.
+
+3 “pills” ou petits blocs chiffres :
+
+“+X clients professionnels”
+
+“Livraisons à Abidjan & intérieur du pays”
+
+“Stock permanent en produits alimentaires”
+
+3. Section “Nos services / Ce que nous faisons”
+
+Objectif UX : expliquer en 3–6 cartes claires les offres.
+
+Design :
+
+Fond légèrement coloré (bleu très pâle).
+
+3 ou 4 cartes avec icône + titre + texte court.
+
+Hover : légère élévation + ombre douce.
+
+Cartes possibles :
+
+Distribution en gros & demi-gros
+
+Import-export de produits alimentaires
+
+Approvisionnement régulier (contrats)
+
+Logistique & stockage (gestion de stock, préparation de commande)
+
+4. Section “Processus / Comment nous travaillons ?”
+
+Objectif UX : montrer que c’est simple de travailler avec eux.
+
+Design :
+
+3–4 étapes en ligne sur desktop, en colonne sur mobile.
+
+Icônes numérotées 1, 2, 3, 4.
+
+Étapes :
+
+“Prise de contact & analyse des besoins”
+
+“Proposition d’offre & devis”
+
+“Préparation & organisation du stock”
+
+“Livraison ou retrait en dépôt”
+
+5. Section “Réalisations / Projets”
+
+Objectif UX : crédibilité → montrer qu’ils travaillent déjà pour des pros.
+
+Design :
+
+Grille de vignettes (3–6) : photos d’entrepôts, palettes, camions, clients pro.
+
+Chaque vignette : mini légende type “Approvisionnement d’un supermarché à Abidjan”.
+
+6. Section “Avis / Témoignages clients”
+
+Design :
+
+Fond neutre.
+
+2–3 témoignages sous forme de cartes avec :
+
+Nom / type de client (Ex : “Responsable de supermarché”)
+
+Courte citation.
+
+7. Section “Appel à l’action final”
+
+Objectif UX : dernière chance d’entrer en contact.
+
+Design :
+
+Bandeau avec fond dégradé.
+
+Titre H2 + texte court + 2 boutons : “Demander un devis” / “Discuter sur WhatsApp”.
+
+8. Mini-bloc contact (en bas de Home)
+
+Résumé des coordonnées :
+
+Adresse (rue Paul Langevin, 4e carrefour après Amoré – Marcory Zone 4)
+
+Téléphones
+
+WhatsApp
+
+Horaires
+
+🧱 Page 2 – Services
+
+Liste détaillée de chaque service avec :
+
+Bloc par service : titre, description, exemples concrets, CTA “Demander un devis sur ce service”.
+
+Tableaux ou listes pour :
+
+Types de produits fournis (alimentaire sec, boissons, hygiène…)
+
+Conditions (minimum de commande, zones de livraison, délais…).
+
+🧱 Page 3 – À propos
+
+Histoire de l’entreprise (création, développement).
+
+Mission & vision (approvisionnement fiable, qualité, disponibilité).
+
+Valeurs : fiabilité, respect des délais, proximité, transparence.
+
+Bloc “Équipe” avec quelques rôles (DG, responsable commercial, logistique) même si ce n’est pas très détaillé.
+
+🧱 Page 4 – Réalisations / Portfolio
+
+Grille avec :
+
+Catégorie (supermarché, hôtel, dépôt, entreprise…)
+
+Petite description : type de produits, fréquence d’approvisionnement, zone.
+
+🧱 Page 5 – Contact
+
+Formulaire :
+
+Nom / Entreprise
+
+Téléphone
+
+Email
+
+Type de besoin (liste déroulante)
+
+Message
+
+Coordonnées complètes à côté.
+
+Bouton WhatsApp visible.
+
+Carte (Google Maps intégrable plus tard).
+
+🧱 Footer global
+
+Logo / nom stylisé “Nouvelle Leader Mar”.
+
+Liens : Accueil, Services, À propos, Réalisations, Contact.
+
+Coordonnées résumées.
+
+Mentions légales / Politique de confidentialité.
+
+2️⃣ Contenus texte (titres, sous-titres, paragraphes, CTA)
+🌍 Page Accueil – Exemple de contenus
+Hero
+
+H1 :
+Votre partenaire grossiste & import-export à Marcory – Zone 4
+
+Sous-titre :
+Nouvelle Leader Mar aprovisionne détaillants, supermarchés et entreprises en produits alimentaires et de consommation, avec des stocks disponibles et des livraisons fiables partout à Abidjan.
+
+Bullet confiance :
++10 ans d’expérience – Livraison rapide – Prix compétitifs
+
+Boutons :
+
+Demander un devis
+
+Appeler maintenant
+
+Section “Qui sommes-nous ?”
+
+Titre H2 :
+Nouvelle Leader Mar, grossiste de confiance en alimentation générale
+
+Paragraphe :
+Basée à Marcory – Zone 4, Nouvelle Leader Mar est spécialisée dans la distribution en gros et l’import-export de produits alimentaires et de consommation. Nous accompagnons les dépôts, boutiques, supermarchés, hôtels et entreprises avec des stocks réguliers, une logistique maîtrisée et un service orienté long terme.
+
+3 chiffres / mini-blocs :
+
++150 clients professionnels
+
+Livraisons régulières à Abidjan et à l’intérieur du pays
+
+Stock permanent en produits alimentaires clés
+
+Section “Nos services”
+
+Titre H2 :
+Nos services pour professionnels
+
+Cartes :
+
+Distribution en gros & demi-gros
+Approvisionnement en volume pour dépôts, boutiques, supermarchés et entreprises, avec des prix adaptés aux professionnels et un service personnalisé.
+
+Import-export de produits alimentaires
+Sélection et importation de produits alimentaires et de consommation, selon vos besoins, avec respect des normes et des délais.
+
+Approvisionnement régulier & contrats
+Mise en place de tournées et de contrats d’approvisionnement pour assurer la disponibilité continue de vos produits stratégiques.
+
+Logistique & stockage
+Gestion de stock, préparation de commande, optimisation des flux pour vous garantir des livraisons fiables et rapides.
+
+CTA sous la section :
+Voir tous nos services (lien vers /services)
+
+Section “Processus”
+
+Titre H2 :
+Comment nous travaillons avec vous
+
+Étapes :
+
+Écoute & analyse de vos besoins
+Nous échangeons avec vous pour comprendre vos volumes, fréquences et contraintes logistiques.
+
+Proposition d’offre & devis
+Nous préparons une proposition claire : produits, prix, modalités de livraison.
+
+Préparation & organisation du stock
+Vos commandes sont préparées en entrepôt avec contrôle des quantités et de la qualité.
+
+Livraison ou retrait en dépôt
+Livraison sur site ou retrait dans notre dépôt à Marcory – Zone 4, selon votre organisation.
+
+Section “Réalisations”
+
+Titre H2 :
+Quelques réalisations
+
+Vignettes exemple :
+
+Approvisionnement mensuel d’un supermarché à Marcory
+
+Livraison régulière de boissons pour un réseau de dépôts
+
+Fourniture de produits d’hygiène pour une entreprise de services
+
+Section “Témoignages”
+
+Titre H2 :
+Ils nous font confiance
+
+Exemples :
+
+Responsable de supermarché
+“Nouvelle Leader Mar nous livre depuis plusieurs années. Les stocks sont fiables et les équipes sont réactives.”
+
+Gérant de dépôt
+“Nous avons trouvé un partenaire stable pour nos produits alimentaires et boissons. Le service est sérieux.”
+
+Section “Appel à l’action final”
+
+Titre H2 :
+Parlons de vos besoins en approvisionnement
+
+Texte :
+Vous cherchez un partenaire de confiance pour vos approvisionnements en gros ? Contactez-nous pour une étude rapide et un devis personnalisé.
+
+Boutons :
+
+Demander un devis
+
+Discuter sur WhatsApp
+
+Les autres pages (Services, À propos, Réalisations, Contact) peuvent reprendre ces contenus en version plus longue/détaillée, mais l’essentiel pour le code sera la Homepage.
