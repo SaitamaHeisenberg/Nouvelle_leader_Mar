@@ -619,6 +619,62 @@ function initHeroSlider() {
 }
 
 // ============================================
+// TYPEWRITER EFFECT
+// ============================================
+
+/**
+ * Typewriter effect for hero subtitle
+ */
+function initTypewriter() {
+    const element = document.getElementById('typewriter');
+    if (!element) return;
+
+    const phrases = [
+        'Shipchandling, shipagency et import-export',
+        'Livraison rapide et service fiable',
+        'Distribution en gros et demi-gros à Abidjan',
+        'Votre partenaire de confiance depuis +10 ans'
+    ];
+
+    let phraseIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    let typingSpeed = 50;
+
+    function type() {
+        const currentPhrase = phrases[phraseIndex];
+
+        if (isDeleting) {
+            element.textContent = currentPhrase.substring(0, charIndex - 1);
+            charIndex--;
+            typingSpeed = 30;
+        } else {
+            element.textContent = currentPhrase.substring(0, charIndex + 1);
+            charIndex++;
+            typingSpeed = 50;
+        }
+
+        if (!isDeleting && charIndex === currentPhrase.length) {
+            // Pause at end of phrase
+            typingSpeed = 2000;
+            isDeleting = true;
+        } else if (isDeleting && charIndex === 0) {
+            isDeleting = false;
+            phraseIndex = (phraseIndex + 1) % phrases.length;
+            typingSpeed = 400;
+        }
+
+        setTimeout(type, typingSpeed);
+    }
+
+    // Start after a short delay
+    setTimeout(type, 800);
+}
+
+// Initialize typewriter
+document.addEventListener('DOMContentLoaded', initTypewriter);
+
+// ============================================
 // CONSOLE MESSAGE
 // ============================================
 

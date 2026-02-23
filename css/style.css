@@ -1051,10 +1051,22 @@ ul {
     box-shadow: var(--shadow-lg);
 }
 
+.about-grid.reverse {
+    direction: rtl;
+}
+
+.about-grid.reverse > * {
+    direction: ltr;
+}
+
 @media (max-width: 768px) {
     .about-grid {
         grid-template-columns: 1fr;
         gap: 2rem;
+    }
+
+    .about-grid.reverse {
+        direction: ltr;
     }
 
     .about-features {

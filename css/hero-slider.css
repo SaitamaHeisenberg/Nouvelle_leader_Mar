@@ -337,6 +337,24 @@
     }
 }
 
+/* ===== TYPEWRITER EFFECT ===== */
+.typewriter {
+    display: inline;
+}
+
+.typewriter-cursor {
+    display: inline-block;
+    color: var(--color-white);
+    font-weight: 300;
+    animation: cursorBlink 0.7s step-end infinite;
+    margin-left: 2px;
+}
+
+@keyframes cursorBlink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
 /* ===== RESPONSIVE ===== */
 
 /* Tablette (768px - 991px) */
