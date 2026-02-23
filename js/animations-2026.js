@@ -363,22 +363,30 @@
     // INITIALIZE ALL
     // ============================================
     document.addEventListener('DOMContentLoaded', () => {
-        // Remove AOS data attributes to prevent conflicts
-        removeAOSAttributes();
+        try {
+            // Remove AOS data attributes to prevent conflicts
+            removeAOSAttributes();
 
-        // Auto-apply reveal classes
-        autoApplyRevealClasses();
+            // Auto-apply reveal classes
+            autoApplyRevealClasses();
 
-        // Initialize all modules
-        initPreloader();
-        initScrollProgress();
-        initScrollReveal();
-        initEnhancedCounters();
-        initRippleEffect();
-        initCursorFollower();
-        initNavbarEnhanced();
-        initParallaxImage();
-        initFAQ();
+            // Initialize all modules
+            initPreloader();
+            initScrollProgress();
+            initScrollReveal();
+            initEnhancedCounters();
+            initRippleEffect();
+            initCursorFollower();
+            initNavbarEnhanced();
+            initParallaxImage();
+            initFAQ();
+        } catch (e) {
+            // Ensure page is always visible even if animations fail
+            console.error('Animation init error:', e);
+            document.body.classList.add('loaded');
+            var preloader = document.querySelector('.preloader');
+            if (preloader) preloader.classList.add('loaded');
+        }
     });
 
 })();
