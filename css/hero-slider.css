@@ -219,7 +219,7 @@
 /* ===== INDICATEURS - Modern Pill Style ===== */
 .slider-indicators {
     position: absolute;
-    bottom: 2rem;
+    bottom: 3.5rem;
     left: 50%;
     transform: translateX(-50%);
     z-index: 15;
@@ -275,9 +275,19 @@
     100% { width: 100%; }
 }
 
-/* ===== SCROLL INDICATOR - Hidden (remplacé par slider-indicators) ===== */
+/* ===== SCROLL INDICATOR - Mouse Style ===== */
 .hero-slider .scroll-indicator {
-    display: none;
+    position: absolute;
+    bottom: 0.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 15;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
 }
 
 .hero-slider .scroll-indicator:hover {
