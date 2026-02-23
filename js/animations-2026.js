@@ -270,7 +270,6 @@
         const navbar = document.getElementById('navbar');
         if (!navbar) return;
 
-        let lastScroll = 0;
         let ticking = false;
 
         window.addEventListener('scroll', () => {
@@ -284,26 +283,14 @@
                         navbar.classList.remove('scrolled');
                     }
 
-                    // Hide on scroll down, show on scroll up (after 300px)
-                    if (currentScroll > 300) {
-                        if (currentScroll > lastScroll + 5) {
-                            navbar.style.transform = 'translateY(-100%)';
-                        } else if (currentScroll < lastScroll - 5) {
-                            navbar.style.transform = 'translateY(0)';
-                        }
-                    } else {
-                        navbar.style.transform = 'translateY(0)';
-                    }
-
-                    lastScroll = currentScroll;
                     ticking = false;
                 });
                 ticking = true;
             }
         }, { passive: true });
 
-        // Add smooth transition for hide/show
-        navbar.style.transition = 'transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), background 0.3s ease, box-shadow 0.3s ease, backdrop-filter 0.3s ease';
+        // Smooth transition for background change on scroll
+        navbar.style.transition = 'background 0.3s ease, box-shadow 0.3s ease, backdrop-filter 0.3s ease';
     }
 
     // ============================================
