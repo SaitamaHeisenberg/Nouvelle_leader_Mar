@@ -1,0 +1,662 @@
+/* =========================================
+   ANIMATIONS 2026 - NOUVELLE LEADER MAR
+   Micro-interactions, smooth reveals, modern UI
+   ========================================= */
+
+/* =========================================
+   PRELOADER
+   ========================================= */
+.preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #0033CC 0%, #001F99 100%);
+    z-index: 99999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 2rem;
+    transition: opacity 0.6s ease, visibility 0.6s ease;
+}
+
+.preloader.loaded {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.preloader-logo {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: contain;
+    animation: preloaderPulse 1.5s ease-in-out infinite;
+    box-shadow: 0 0 40px rgba(0, 212, 232, 0.4);
+}
+
+.preloader-bar {
+    width: 200px;
+    height: 3px;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.preloader-bar::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, #00D4E8, #5DE7F0, #00D4E8);
+    border-radius: 3px;
+    animation: preloaderSlide 1.2s ease-in-out infinite;
+}
+
+@keyframes preloaderPulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.08); opacity: 0.85; }
+}
+
+@keyframes preloaderSlide {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+/* =========================================
+   SCROLL PROGRESS BAR
+   ========================================= */
+.scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 3px;
+    background: linear-gradient(90deg, #00D4E8, #5DE7F0, #0033CC);
+    z-index: 10000;
+    transition: width 0.1s linear;
+    box-shadow: 0 0 10px rgba(0, 212, 232, 0.5);
+}
+
+/* =========================================
+   GLASSMORPHISM NAVBAR (enhanced)
+   ========================================= */
+.navbar.scrolled {
+    background: rgba(255, 255, 255, 0.85) !important;
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 4px 30px rgba(0, 51, 204, 0.08) !important;
+}
+
+/* =========================================
+   HERO - KEN BURNS EFFECT
+   ========================================= */
+.hero-slide.active img {
+    animation: kenBurns 8s ease-in-out forwards;
+}
+
+@keyframes kenBurns {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(1.08);
+    }
+}
+
+/* Hero Text Staggered Reveal */
+.hero-title {
+    overflow: hidden;
+}
+
+.hero-title.reveal {
+    animation: textRevealUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.hero-subtitle.reveal {
+    animation: textRevealUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
+    opacity: 0;
+}
+
+.hero-cta.reveal {
+    animation: textRevealUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards;
+    opacity: 0;
+}
+
+@keyframes textRevealUp {
+    0% {
+        opacity: 0;
+        transform: translateY(40px);
+        filter: blur(4px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+        filter: blur(0);
+    }
+}
+
+/* =========================================
+   SCROLL REVEAL ANIMATIONS
+   ========================================= */
+.reveal-on-scroll {
+    opacity: 0;
+    transform: translateY(60px);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-on-scroll.revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.reveal-left {
+    opacity: 0;
+    transform: translateX(-60px);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-left.revealed {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.reveal-right {
+    opacity: 0;
+    transform: translateX(60px);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-right.revealed {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.reveal-scale {
+    opacity: 0;
+    transform: scale(0.9);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-scale.revealed {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Stagger delays for grid items */
+.stagger-1 { transition-delay: 0.1s; }
+.stagger-2 { transition-delay: 0.2s; }
+.stagger-3 { transition-delay: 0.3s; }
+.stagger-4 { transition-delay: 0.4s; }
+
+/* =========================================
+   STAT COUNTER - ENHANCED ANIMATION
+   ========================================= */
+.stat-item {
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+                box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.stat-item:hover {
+    transform: translateY(-8px) !important;
+    box-shadow: 0 20px 40px rgba(0, 51, 204, 0.12) !important;
+}
+
+.stat-item:hover .stat-icon {
+    animation: iconBounce 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes iconBounce {
+    0% { transform: scale(1); }
+    40% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+.stat-number {
+    transition: color 0.3s ease;
+}
+
+.stat-item:hover .stat-number {
+    color: var(--color-secondary-600);
+}
+
+/* =========================================
+   SERVICE CARDS - 3D TILT HOVER
+   ========================================= */
+.service-card {
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+                box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+                border-color 0.3s ease;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+    position: relative;
+    overflow: hidden;
+}
+
+.service-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(0, 212, 232, 0.03),
+        transparent
+    );
+    transition: left 0.6s ease;
+}
+
+.service-card:hover::before {
+    left: 100%;
+}
+
+.service-card:hover {
+    transform: translateY(-12px) rotateX(2deg) !important;
+    box-shadow: 0 30px 60px rgba(0, 51, 204, 0.15) !important;
+}
+
+.service-card:hover .service-icon {
+    transform: scale(1.1) rotate(5deg);
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.service-link {
+    position: relative;
+    overflow: hidden;
+}
+
+.service-link::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--color-primary-700);
+    transition: width 0.3s ease;
+}
+
+.service-link:hover::after {
+    width: 100%;
+}
+
+/* =========================================
+   WHY CARDS - ENHANCED HOVER
+   ========================================= */
+.why-card {
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+                box-shadow 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.why-card:hover {
+    transform: translateY(-12px) !important;
+    box-shadow: 0 30px 60px rgba(0, 51, 204, 0.18) !important;
+}
+
+.why-card:hover .why-image img {
+    transform: scale(1.15) !important;
+}
+
+/* =========================================
+   BUTTONS - RIPPLE EFFECT & MICRO-INTERACTIONS
+   ========================================= */
+.btn {
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+                box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+                background 0.3s ease;
+}
+
+.btn:active {
+    transform: scale(0.97) !important;
+}
+
+.btn .ripple {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.4);
+    transform: scale(0);
+    animation: rippleEffect 0.6s ease-out;
+    pointer-events: none;
+}
+
+@keyframes rippleEffect {
+    to {
+        transform: scale(4);
+        opacity: 0;
+    }
+}
+
+.btn-cta-primary {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-cta-primary:hover svg {
+    animation: arrowSlide 0.4s ease forwards;
+}
+
+@keyframes arrowSlide {
+    0% { transform: translateX(0); }
+    50% { transform: translateX(6px); }
+    100% { transform: translateX(4px); }
+}
+
+/* =========================================
+   CTA SECTION - ANIMATED GRADIENT
+   ========================================= */
+.cta-section {
+    background: linear-gradient(-45deg, #0033CC, #002DB3, #00A3B5, #00D4E8);
+    background-size: 400% 400%;
+    animation: gradientShift 12s ease infinite;
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* =========================================
+   CURSOR FOLLOWER (Desktop only)
+   ========================================= */
+.cursor-follower {
+    position: fixed;
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--color-primary-700);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 99998;
+    transition: transform 0.15s ease-out,
+                width 0.3s ease,
+                height 0.3s ease,
+                border-color 0.3s ease,
+                background 0.3s ease;
+    transform: translate(-50%, -50%);
+    mix-blend-mode: difference;
+    opacity: 0;
+}
+
+.cursor-follower.visible {
+    opacity: 1;
+}
+
+.cursor-follower.hover-active {
+    width: 50px;
+    height: 50px;
+    background: rgba(0, 212, 232, 0.1);
+    border-color: var(--color-secondary-600);
+}
+
+@media (max-width: 1024px) {
+    .cursor-follower {
+        display: none !important;
+    }
+}
+
+/* =========================================
+   PROCESS STEPS - ANIMATED LINE CONNECTOR
+   ========================================= */
+.process-grid {
+    position: relative;
+}
+
+@media (min-width: 768px) {
+    .process-step {
+        position: relative;
+    }
+
+    .process-step::after {
+        content: '';
+        position: absolute;
+        top: 70px;
+        right: -1rem;
+        width: calc(100% - 80px);
+        height: 2px;
+        background: linear-gradient(90deg, var(--color-secondary-300), transparent);
+        opacity: 0;
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1),
+                    opacity 0.5s ease;
+    }
+
+    .process-step:last-child::after {
+        display: none;
+    }
+
+    .process-step.revealed::after {
+        opacity: 1;
+        transform: scaleX(1);
+    }
+}
+
+.step-number {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.process-step:hover .step-number {
+    transform: translateX(-50%) scale(1.15);
+    box-shadow: 0 8px 20px rgba(0, 212, 232, 0.3);
+}
+
+/* =========================================
+   FOOTER - SUBTLE ANIMATIONS
+   ========================================= */
+.footer-links a {
+    position: relative;
+    display: inline-block;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.footer-links a:hover {
+    transform: translateX(8px) !important;
+    padding-left: 0 !important;
+}
+
+.footer-links a::before {
+    content: '';
+    position: absolute;
+    left: -15px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0;
+    height: 2px;
+    background: var(--color-secondary-500);
+    transition: width 0.3s ease;
+}
+
+.footer-links a:hover::before {
+    width: 10px;
+}
+
+/* =========================================
+   WHATSAPP BUTTON - ENHANCED
+   ========================================= */
+.whatsapp-float {
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                box-shadow 0.4s ease;
+}
+
+.whatsapp-float:hover {
+    transform: scale(1.15) !important;
+    box-shadow: 0 15px 40px rgba(37, 211, 102, 0.5) !important;
+}
+
+/* Tooltip */
+.whatsapp-float::before {
+    content: 'Besoin d\'aide ?';
+    position: absolute;
+    right: 70px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #1a1a1a;
+    color: white;
+    padding: 8px 14px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 500;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    pointer-events: none;
+}
+
+.whatsapp-float::after {
+    content: '';
+    position: absolute;
+    right: 65px;
+    top: 50%;
+    transform: translateY(-50%);
+    border: 6px solid transparent;
+    border-left-color: #1a1a1a;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    pointer-events: none;
+}
+
+.whatsapp-float:hover::before,
+.whatsapp-float:hover::after {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* =========================================
+   FAQ - SMOOTH ACCORDION
+   ========================================= */
+.faq-item {
+    transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.faq-item:hover {
+    border-color: var(--color-primary-200);
+}
+
+.faq-item.active {
+    border-color: var(--color-primary-400);
+    box-shadow: 0 8px 24px rgba(0, 51, 204, 0.08);
+}
+
+.faq-question {
+    transition: color 0.3s ease, padding 0.3s ease;
+}
+
+.faq-item.active .faq-question {
+    color: var(--color-primary-700);
+}
+
+/* =========================================
+   CONTACT INFO CARDS - ENHANCED
+   ========================================= */
+.contact-info-card {
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                box-shadow 0.4s ease,
+                border-color 0.3s ease;
+}
+
+.contact-info-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 16px 32px rgba(0, 51, 204, 0.1) !important;
+}
+
+.contact-info-card:hover .info-icon {
+    animation: iconBounce 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* =========================================
+   FORM INPUTS - MODERN FOCUS STYLE
+   ========================================= */
+.form-group input,
+.form-group textarea,
+.form-group select {
+    transition: border-color 0.3s ease,
+                box-shadow 0.3s ease,
+                transform 0.2s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    border-color: var(--color-secondary-600) !important;
+    box-shadow: 0 0 0 4px rgba(0, 212, 232, 0.1),
+                0 4px 12px rgba(0, 51, 204, 0.06) !important;
+    transform: translateY(-1px);
+}
+
+/* =========================================
+   ABOUT SECTION IMAGE - PARALLAX FLOAT
+   ========================================= */
+.about-image {
+    transition: transform 0.6s ease;
+}
+
+.about-img {
+    animation: floatImage 6s ease-in-out infinite;
+}
+
+@keyframes floatImage {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+/* =========================================
+   SMOOTH PAGE TRANSITIONS
+   ========================================= */
+body {
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+body.loaded {
+    opacity: 1;
+}
+
+/* =========================================
+   SELECTION STYLE
+   ========================================= */
+::selection {
+    background: rgba(0, 212, 232, 0.2);
+    color: var(--color-primary-900);
+}
+
+/* =========================================
+   REDUCED MOTION PREFERENCE
+   ========================================= */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+
+    .preloader {
+        display: none !important;
+    }
+
+    .cursor-follower {
+        display: none !important;
+    }
+
+    .reveal-on-scroll,
+    .reveal-left,
+    .reveal-right,
+    .reveal-scale {
+        opacity: 1 !important;
+        transform: none !important;
+    }
+}
